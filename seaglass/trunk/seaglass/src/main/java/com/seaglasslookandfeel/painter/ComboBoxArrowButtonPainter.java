@@ -20,9 +20,7 @@
 package com.seaglasslookandfeel.painter;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.Shape;
@@ -60,33 +58,12 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
     public ButtonStateColors       pressed;
     public ButtonStateColors       disabled;
 
-    private static final Insets    bgInsets             = new Insets(4, 1, 4, 4);
-    private static final Dimension bgDimension          = new Dimension(21, 23);
-    private static final CacheMode cacheMode            = CacheMode.FIXED_SIZES;
-    private static final Double    maxH                 = 1.0;
-    private static final Double    maxV                 = Double.POSITIVE_INFINITY;
-
-    private static final Insets    fgInsets             = new Insets(0, 0, 0, 0);
+    private sets    fgInsets             = new Insets(0, 0, 0, 0);
     private static final Dimension fgDimension          = new Dimension(10, 6);
 
     private static final Dimension fgEditableDimension  = new Dimension(6, 9);
 
-    private Path2D                 path                 = new Path2D.Double();
-
-    private Which                  state;
-    private PaintContext           ctx;
-
-    public ComboBoxArrowButtonPainter(Which state) {
-        super();
-        this.state = state;
-        Insets ins = bgInsets;
-        Dimension dim = bgDimension;
-        boolean inverted = false;
-        CacheMode mode = cacheMode;
-        Double maxH = ComboBoxArrowButtonPainter.maxH;
-        Double maxV = ComboBoxArrowButtonPainter.maxV;
-        if (state == Which.FOREGROUND_ENABLED || state == Which.FOREGROUND_DISABLED || state == Which.FOREGROUND_PRESSED
-                || state == Which.FOREGROUND_SELECTED) {
+    private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || state == Which.FOREGROUND_SELECTED) {
             ins = fgInsets;
             dim = fgDimension;
             inverted = true;
@@ -360,6 +337,4 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
             this.mainColor = mainColor;
             this.backgroundTop = backgroundTop;
             this.backgroundBottom = backgroundBottom;
-        }
-    }
-}
+ 
