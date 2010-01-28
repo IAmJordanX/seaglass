@@ -24,12 +24,14 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JComponent;
 
 import com.seaglasslookandfeel.painter.AbstractRegionPainter.PaintContext.CacheMode;
+import com.seaglasslookandfeel.painter.util.ShapeUtil;
+import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerSize;
+import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerStyle;
 
 /**
  * ComboBoxArrowButtonPainter implementation.
@@ -51,17 +53,15 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
         FOREGROUND_EDITABLE_DISABLED,
     }
 
-    private static final Color     ENABLED_ARROW_COLOR  = new Color(0x000000);
-    private static final Color     DISABLED_ARROW_COLOR = new Color(0x9ba8cf);
+    private static final Color ENABLED_ARROW_COLOR  = new Color(0x000000);
+    private static final Color DISABLED_ARROW_COLOR = new Color(0x9ba8cf);
 
-    public ButtonStateColors       enabled;
-    public ButtonStateColors       pressed;
-    public ButtonStateColors       disabled;
+    public ButtonStateColors   enabled;
+    public ButtonStateColors   pressed;
+    public ButtonStateColors   disabled;
 
-    private sets    fgInsets             = new Insets(0, 0, 0, 0);
-    private static final Dimension fgDimension          = new Dimension(10, 6);
-
-    private static final Dimension fgEditableDimension  = new Dimension(6, 9);
+    private Which              state;
+    private PaintContext  private static final Dimension fgEditableDimension  = new Dimension(6, 9);
 
     private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || state == Which.FOREGROUND_SELECTED) {
             ins = fgInsets;
@@ -142,52 +142,37 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
         return ctx;
     }
 
-    private void paintDisabledEditable(Graphics2D g, JComponent c, int width, int height) {
-        paintButton(g, c, width, height, disabled);
-    }
-
-    private void paintEnabledEditable(Graphics2D g, JComponent c, int width, int height) {
-        paintButton(g, c, width, height, enabled);
-    }
-
-    private void paintPressedEditable(Graphics2D g, JComponent c, int width, int height) {
-        paintButton(g, c, width, height, pressed);
-    }
-
-    private void paintButton(Graphics2D g, JComponent c, int width, int height, ButtonStateColors colors) {
+    private void Shape stDisabledEditable(Graphics2D g, JComponent c, int width, int height) {
+     s, colors.backgroundTop, colors.backgroundBottom));
+        g.fill(s);
+        s = decodeInterior(width, height);
+        g.setColor(colors.mainColor);
+        g.fill(s);
+        g.setPaint(decodeGradientBottomShine(sEditable(Graphics2D g, JComponent c, int width, int height) {
+        paintButton(g, c, widths);
+        g.setPaint(decodeGradientTopShine(s, colors.upperShineTop, colors.upperShineBottom));
+        g.fill(ss colors) {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         path = decodeBorder(width, height);
-        g.setPaint(decodeGradientBackground(path, colors.backgroundTop, colors.backgroundBottom));
-        g.fill(path);
-        path = decodeInterior(width, height);
-        g.setColor(colors.mainColor);
-        g.fill(path);
-        g.setPaint(decodeGradientBottomShine(path, colors.lowerShineTop, colors.lowerShineBottom, colors.lowerShineMidpoint));
-        g.fill(path);
-        g.setPaint(decodeGradientTopShine(path, colors.upperShineTop, colors.upperShineBottom));
-        g.fill(path);
-    }
-
-    private void paintArrowsEnabled(Graphics2D g, JComponent c, int width, int height) {
+        g.setPaint(decodeGradientBackground(path, colors.backgroundToShape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
         g.setColor(ENABLED_ARROW_COLOR);
+        g.fill(s);
+
+        s = ShapeUtil.createArrowRight(6.5, 0.5, 3, 4);
+        g.fill(sht) {
+        g.setColor(DISABLED_ARROW_COLOR);
 
         path.reset();
-        path.moveTo(3.5, 0.5);
-        path.lineTo(0.5, 2.5);
-        path.lineTo(3.5, 4.5);
-        path.closePath();
-        g.fill(path);
+        sDisenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        path.reset();
-        path.moveTo(6.5, 0.5);
-        path.lineTo(9.5, 2.5);
-        path.lineTo(6.5, 4.5);
-        path.closePath();
-        g.fill(path);
-    }
+        path = decodeBorder(width, height);
+        g.setPaint(decodeGradientBackground(path, colors.backgroundToShape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
+        g.setColor(DISABLED_ARROW_COLOR);
+        g.fill(s);
 
-    private void paintArrowsDisabled(Graphics2D g, JComponent c, int width, int height) {
+        s = ShapeUtil.createArrowRight(6.5, 0.5, 3, 4);
+        g.fill(sht) {
         g.setColor(DISABLED_ARROW_COLOR);
 
         path.reset();
@@ -199,63 +184,35 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
 
         path.reset();
         path.moveTo(6.5, 0.5);
-        path.lineTo(9.5, 2.5);
-        path.lineTo(6.5, 4.5);
-        path.closePath();
-        g.fill(path);
-    }
-
-    private void paintArrowDownEnabled(Graphics2D g, JComponent c, int width, int height) {
-        path.reset();
-        path.moveTo(5.2, 1.0);
-        path.lineTo(1.0, 4.0);
-        path.lineTo(5.2, 7.0);
-        path.closePath();
+ Shape s = ShapeUtil.createArrowLeft(1, 1, 4.2, 6);
         g.setColor(ENABLED_ARROW_COLOR);
-        g.fill(path);
-    }
-
-    private void paintArrowDownDisabled(Graphics2D g, JComponent c, int width, int height) {
-        path.reset();
-        path.moveTo(5.2, 1.0);
-        path.lineTo(1.0, 4.0);
-        path.lineTo(5.2, 7.0);
-        path.closePath();
+        g.fill(sht) {
         g.setColor(DISABLED_ARROW_COLOR);
+
+        path.reset();
+        pathDisenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        path = decodeBorLED_ARROW_COLOR);
         g.fill(path);
     }
 
-    Path2D decodeBorder(double width, double height) {
-        double arcSize = 4.0;
-        double x = 0.0;
-        double y = 2.0;
-        width -= 2.0;
-        height -= 4.0;
-        decodeButtonPath(x, y, width, height, arcSize, arcSize);
-        return path;
+    private void paintArrowDownDisabled(GrShape s = ShapeUtil.createArrowLeft(1, 1, 4.2, 6);
+        g.setColor(DISABLED_ARROW_COLOR);
+        g.fill(s);
+
+        g.translate(-xOffset, -yOffset);
     }
 
-    Path2D decodeInterior(double width, double height) {
-        double arcSize = 3.0;
-        double x = 1.0;
-        double y = 3.0;
-        width -= 4.0;
-        height -= 6.0;
-        decodeButtonPath(x, y, width, height, arcSize, arcSize);
-        return path;
+    private Shape decodeBorder(int width, int height) {
+        return decodeButtonPath(CornerSize.BORDER, 0, 2, width - 2, height - 4);
     }
 
-    private void decodeButtonPath(Double left, Double top, Double width, Double height, Double arcW, Double arcH) {
-        Double bottom = top + height;
-        Double right = left + width;
-        path.reset();
-        path.moveTo(left, top);
-        path.lineTo(left, bottom);
-        path.lineTo(right - arcW, bottom);
-        path.quadTo(right, bottom, right, bottom - arcH);
-        path.lineTo(right, top + arcH);
-        path.quadTo(right, top, right - arcW, top);
-        path.closePath();
+    private Shape decodeInterior(int width, int height) {
+        return decodeButtonPath(CornerSize.INTERIOR, 1, 3, width - 4, height - 6);
+    }
+
+    private Shape decodeButtonPath(CornerSize size, int x, int y, int w, int h) {
+        return ShapeUtil.createQuad(size, x, y, w, h, CornerStyle.SQUARE, CornerStyle.SQUARE, CornerStyle.ROUNDED, CornerStyle.ROUNDED  path.closePath();
     }
 
     /**
