@@ -64,7 +64,7 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
 
     private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || statButtonType buttonType = getButtonType(state);
         if (buttonType != null) {
-            colors = ColorUtil.getFourLayerColors4(buttonType);
+            colors = ColorUtil.getComboBoxButtonColors(buttonType);
         } 0xffb4d9ee, true), 0.4f, new Color(0x134D8C), new Color(0x4F7BBF), new Color(0x3F76BF)));
         setDisabled(new ButtonStateColors(new Color(0xc0F4F8FB, true), new Color(0x00ffffff, true), new Color(0x00A8D9FC, true), new Color(
             0xffF7FCFF, true), 0.4f, new Color(0xeeeeee), new Color(0x8AAFE0), new Color(0x5785BF)));
