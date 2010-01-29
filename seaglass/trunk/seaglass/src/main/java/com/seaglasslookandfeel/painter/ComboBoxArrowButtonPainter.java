@@ -131,7 +131,7 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
     }
 
     private void Shape stDicreateButtonPath(CornerSize.BORDER, 0, 2, width - 2, height - 4);
-        ColorUtil.paintTwoColorGradientVertical(g, s, colors.backgroundTop, colors.backgroundBottom);
+        ColorUtil.paintTwoColorGradientVertical(g, s, colors.background.topColor, colors.background.bottomColor);
 
         s = createButtonPath(CornerSize.INTERIOR, 1, 3, width - 4, height - 6);
         ColorUtil.paintThreeLayerGradientVertical(g, s, colorss colors) {
