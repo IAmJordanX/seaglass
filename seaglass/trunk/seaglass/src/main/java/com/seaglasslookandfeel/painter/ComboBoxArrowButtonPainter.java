@@ -30,7 +30,6 @@ import com.seaglasslookandfeel.painter.AbstractRegionPainter.PaintContext.CacheM
 import com.seaglasslookandfeel.painter.util.ColorUtil;
 import com.seaglasslookandfeel.painter.util.ShapeUtil;
 import com.seaglasslookandfeel.painter.util.ColorUtil.ButtonType;
-import com.seaglasslookandfeel.painter.util.ColorUtil.FourLayerColors;
 import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerSize;
 import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerStyle;
 
@@ -60,12 +59,9 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
     private Which              state;
     private PaintContext       ctx;
 
-    private FourLayerColors    colorsstatic final Dimension fgEditableDimension  = new Dimension(6, 9);
+    private ButtonType         typestatic final Dimension fgEditableDimension  = new Dimension(6, 9);
 
-    private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || statButtonType buttonType = getButtonType(state);
-        if (buttonType != null) {
-            colors = ColorUtil.getComboBoxButtonColors(buttonType);
-        } 0xffb4d9ee, true), 0.4f, new Color(0x134D8C), new Color(0x4F7BBF), new Color(0x3F76BF)));
+    private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || stattype = getButtonType(state); 0xffb4d9ee, true), 0.4f, new Color(0x134D8C), new Color(0x4F7BBF), new Color(0x3F76BF)));
         setDisabled(new ButtonStateColors(new Color(0xc0F4F8FB, true), new Color(0x00ffffff, true), new Color(0x00A8D9FC, true), new Color(
             0xffF7FCFF, true), 0.4f, new Color(0xeeeeee), new Color(0x8AAFE0), new Color(0x5785BF)));
     }
@@ -111,19 +107,18 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
         case FOREGROUND_DISABLED:
             paintArrowsDisabled(g, c, width, height);
             break;
-        case FOREGROUND_PRESSED:colors     paintArrowsEnabled(g, c, width, height);
+        case FOREGROUND_PRESSE     paintArrowsEnabled(g, c, width, height);
             break;
         case FOREGROUND_SELECTED:
-            paintArrowsEnabled(g, c, width,colors);
+            paintArrowsEnabled(g, c, widt);
             break;
         case FOREGROUND_EDITABLE:
             paintArrowDownEnabled(g, c, width, height);
             break;
-        cascolors);
+        c);
     }
 
-    private void paintButton(Graphics2D g, JComponent c, int width, int height, FourLayer        }
-    }
+    private void paintButton(Graphics2D g, JComponent c, int width, int height }
 
     @Override
     protected PaintContext getPaintContext() {
@@ -131,14 +126,19 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
     }
 
     private void Shape stDicreateButtonPath(CornerSize.BORDER, 0, 2, width - 2, height - 4);
-        ColorUtil.fillTwoColorGradientVertical(g, s, colors.background);
+        ColorUtil.fillComboBoxButtonBorderColors(g, s, type);
 
         s = createButtonPath(CornerSize.INTERIOR, 1, 3, width - 4, height - 6);
-        ColorUtil.fillThreeLayerGradientVertical(g, s, colorss colors) {
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        ColorUtil.fillComboBoxButtonInteriorColors(g, s, type);
+    }
 
-        path = decodeBorder(width, height);
-        g.setPaint(decodeGradientBackground(path, colors.backgroundToShape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
+    private void paintArrows.moveTo(3.5, 0.5);
+        path.lineTo(0.5, 2.5);
+        path.lineTo(3.5, 4.5);
+        path.c5;
+        int yOffset = height / 2 - 3    path.reset();
+        path.moveTo(6.5, 0.5);
+ Shape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
         g.setColor(ENABLED_ARROW_COLOR);
         g.fill(s);
 
@@ -147,10 +147,13 @@ public final class ComboBoxArrowButtonPainter extends AbstractRegionPainter {
         g.setColor(DISABLED_ARROW_COLOR);
 
         path.reset();
-        sDisenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        path = decodeBorder(width, height);
-        g.setPaint(decodeGradientBackground(path, colors.backgroundToShape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
+        sDisoveTo(3.5, 0.5);
+        path.lineTo(0.5, 2.5);
+        path.lineTo(3.5, 4.5);
+        path.c5;
+        int yOffset = height / 2 - 3    path.reset();
+        path.moveTo(6.5, 0.5);
+ Shape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
         g.setColor(DISABLED_ARROW_COLOR);
         g.fill(s);
 
