@@ -43,10 +43,10 @@ public final class ComboBoxArrowButtonPainter extends AbstractCommonColorsPainte
         FOREGROUND_ENABLED_EDITABLE, FOREGROUND_DISABLED_EDITABLE,
     }
 
-    private Which        state;
-    private PaintContext ctx;
+    private Which             state;
+    private PaintContext      ctx;
 
-    private CommonControlType   typestatic final Dimension fgEditableDimension  = new Dimension(6, 9);
+    private CommonControlType typestatic final Dimension fgEditableDimension  = new Dimension(6, 9);
 
     private Path2D                       this.ctx = new PaintContext(CacheMode.FIXED_SIZES     || stattype = getButtonType(state); 0xffb4d9ee, true), 0.4f, new Color(0x134D8C), new Color(0x4F7BBF), new Color(0x3F76BF)));
         setDisabled(new ButtonStateColors(new Color(0xc0F4F8FB, true), new Color(0x00ffffff, tru:
