@@ -27,9 +27,8 @@ import java.awt.Shape;
 import javax.swing.JComponent;
 
 import com.seaglasslookandfeel.painter.AbstractRegionPainter.PaintContext.CacheMode;
-import com.seaglasslookandfeel.painter.util.ShapeUtil;
-import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerSize;
-import com.seaglasslookandfeel.painter.util.ShapeUtil.CornerStyle;
+import com.seaglasslookandfeel.painter.util.ShapeGenerator.CornerSize;
+import com.seaglasslookandfeel.painter.util.ShapeGenerator.CornerStyle;
 
 /**
  * ComboBoxArrowButtonPainter implementation.
@@ -111,11 +110,11 @@ public final class ComboBoxArrowButtonPainter extends AbstractCommonColorsPainte
         path.c5;
         int yOffset = height / 2 - 3    path.reset();
         path.moveTo(6.5, 0.5);
- Shape s = ShapeUtil.createArrowLeft(0.5, 0.5, 3, 4);
+ Shape s = shapeGenerator.createArrowLeft(0.5, 0.5, 3, 4);
         g.setPaint(getCommonArrowPaint(s, type));
         g.fill(s);
 
-        s = ShapeUtil.createArrowRight(6.5, 0.5, 3, 4);
+        s = shapeGenerator.createArrowRight(6.5, 0.5, 3, 4);
         g.setPaint(getCommonArrowPaint(s, type));
         g.fill(s);
 
@@ -130,7 +129,7 @@ public final class ComboBoxArrowButtonPainter extends AbstractCommonColorsPainte
 
         path.reset();
         path.moveTo(6.5, 0.5);
- Shape s = ShapeUtil.createArrowLeft(1, 1, 4.2, 6);
+ Shape s = shapeGenerator.createArrowLeft(1, 1, 4.2, 6);
         g.setPaint(getCommonArrowPaint(s, type));
         g.fill(s);
 
@@ -138,7 +137,7 @@ public final class ComboBoxArrowButtonPainter extends AbstractCommonColorsPainte
     }
 
     private Shape createButtonPath(CornerSize size, int x, int y, int w, int h) {
-        return ShapeUtil.createRoundRectangle(x, y, w, h, size, CornerStyle.SQUARE, CornerStyle.SQUARE, CornerStyle.ROUNDED,
+        return shapeGenerator.createRoundRectangle(x, y, w, h, size, CornerStyle.SQUARE, CornerStyle.SQUARE, CornerStyle.ROUNDED,
             CornerStyle.ROUNDED);
     }
 
